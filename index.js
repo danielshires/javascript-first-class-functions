@@ -4,65 +4,21 @@ function receivesAFunction(spy) {
     spy()
 }
 
-const spy = function createSpy() {}
+receivesAFunction()
 
 // Named Function
 
-let fn
+function returnsANamedFunction(numOne) {
+    let fn = (numTwo) => {
+        return numOne * numTwo
+    }
+    return fn
+}
 
-before(() => {
-    fn = returnsANamedFunction()
-})
+function returnsAnAnonymousFunction() {
+    return () => {}
+}
 
-function returnsANamedFunction() {}
+const multiplyer = returnsANamedFunction(2)
 
-
-// Anonymous Function
-
-
-
-// function liftWeights() {
-//     console.log('Pump iron');
-// }
-
-// function swimFortyLaps() {
-//     console.log('Swim 40 laps');
-// }
-
-// function runFiveMiles() {
-//     console.log('Go for a five-mile run');
-// }
-
-// function exerciseRoutine(postRunActivity) {
-//     runFiveMiles();
-//     postRunActivity();
-// }
-
-// function Monday() {
-//     exerciseRoutine(liftWeights);
-// }
-
-// function morningRoutine(exercise) {
-//     var breakfast = null;
-
-//     if (exercise === liftWeights) {
-//         breakfast = 'protein bar';
-//     } else if (exercise === swimFortyLaps) {
-//         breakfast = 'kale smoothie';
-//     } else {
-//         breakfast = 'granola';
-//     }
-
-//     exerciseRoutine(exercise);
-
-//     // we could give this function a name if we wanted to,
-//     // but since it's only available _inside_ morningRoutine(),
-//     // we don't need to
-//     return function() {
-//         console.log(`Nom nom nom, this ${breakfast} is delicious!`);
-//     }
-// }
-
-// var afterExercise = morningRoutine(liftWeights);
-
-// afterExercise();
+console.log(multiplyer(2))
